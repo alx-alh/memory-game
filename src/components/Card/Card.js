@@ -2,14 +2,29 @@ import React from 'react';
 import './Card.scss';
 
 const Card = ({label, index, selectCard, isSelected, isMatched}) => {
-  const handleClick = () => {
+  const flipped = isSelected || isMatched;
+  const flipCard = () => {
     // console.log(label)
-    selectCard();
+    !isSelected && selectCard();
   }
+  
+  const handleCardClick = () => {
+    flipCard();
+  }
+
+  const handleCardKeyDown = (e) => {
+    if (e.keyCode === 13 || e.keyCode === 32) {
+      flipCard();
+    }
+  };
+
   return (
-    <div className={`card${isSelected ? ' selected' : ''}${isMatched ? ' matched' : ''}`} onClick={handleClick} role="button" tabIndex="0" aria-label={`card-${index + 1}`}>
-      <div className="card__back"></div>
-      <div className="card__front"><span>{label}</span></div>
+    <div onClick={handleCardClick} onKeyDown={handleCardKeyDown} className={`card${flipped ? ' card--selected' : ''}${isMatched ? ' card--matched' : ''}`} role="button" tabIndex="0" aria-label={`card-${index + 1}`}>
+      <div className="card__inner">
+        <div className="card__back" aria-hidden={flipped}>X{label}</div>
+        <div className="card__front" aria-hidden={flipped}><span>{label}</span></div>
+
+      </div>
     </div>
   )
 }
