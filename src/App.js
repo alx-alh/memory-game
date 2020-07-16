@@ -1,14 +1,9 @@
 import React, {useState} from 'react';
+import Helmet from 'react-helmet';
 import AppProvider, {AppHookProvider} from './provider/appProvider';
 import Header from './components/Header/Header';
 import CardGrid from './components/CardGrid/CardGrid';
 import './App.scss';
-
-const initialState = {
-  victory: false,
-  turns: 0,
-}
-
 
 function App() {
   const [victory, setVictory] = useState(false);

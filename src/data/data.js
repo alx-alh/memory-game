@@ -24,4 +24,3 @@ export default (cardCount) => {
     resolve(data);
   })
 }
-// export default setupCards;

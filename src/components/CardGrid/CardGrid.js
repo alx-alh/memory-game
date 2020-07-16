@@ -9,26 +9,21 @@ import './CardGrid.scss';
 
 let totalCards = 4;
 
-const initialState = {
-  firstCard: undefined,
-  secondCard: undefined,
-  matchedCards: [],
-
-}
 
 const CardGrid = () => {
-  const [state, dispatch] = useReducer(cardReducer, initialState);
-  const [cardData, setCardData] = useState([]);
-  // const [matchedCards, setMatchedCards] = useState([]);
-  // const [firstCard, setFirstCard] = useState();
-  // const [secondCard, setSecondCard] = useState();
-  // const [victory, setVictory] = useState(false);
-  const {turns} = useContext(AppContext);
+  const initialState = {
+    firstCard: undefined,
+    secondCard: undefined,
+    matchedCards: [],
+  
+  }
+  
+  const {turns, victory} = useContext(AppContext);
   const {setVictory, setTurns} = useContext(AppHookContext);
-
-  console.log(setVictory);
-
+  const [state, dispatch] = useReducer(cardReducer, initialState);
   const { matchedCards, firstCard, secondCard} = state;
+  const [cardData, setCardData] = useState([]);
+
 
   
   useEffect(()=>{
@@ -40,7 +35,10 @@ const CardGrid = () => {
   },[]);
 
   useEffect(()=>{
-    matchedCards.length === totalCards && setVictory(true);
+    if(matchedCards.length === totalCards && !victory) {
+      setVictory(true)
+    };
+
   }, [matchedCards]);
 
   const handleClick = (card) => {
@@ -62,8 +60,20 @@ const CardGrid = () => {
     }
   }
 
+  const resetClick = async () => {
+    dispatch({type: 'resetMatches'});
+
+    setCardData([]);
+    setVictory(false);
+    let data = await setupCards(4);
+    setCardData(data);
+
+  }
+
+
   return (
     <main className="main">
+      { victory && <button onClick={() => resetClick()}>Play Again</button>}
       <div className="cardGrid">
         {cardData.map( (card,i) => (
           <Card
@@ -73,7 +83,7 @@ const CardGrid = () => {
             isMatched={matchedCards.includes(card)}
             isSelected={firstCard === card || secondCard === card}
             // isSelected={firstCard.includes(card)}
-            selectCard={() => handleClick(card)  }
+            selectCard={() => handleClick(card)}
           />
         ))}
       </div>

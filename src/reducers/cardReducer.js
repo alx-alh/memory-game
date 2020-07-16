@@ -28,6 +28,14 @@ const cardReducer = (state, action) => {
         secondCard: undefined,
       }
     }
+    case 'resetMatches': {
+      return {
+        ...state,
+        firstCard: undefined,
+        secondCard: undefined,
+        matchedCards: [],
+      }
+    }
     default:
       throw new Error('unrecognized action');
   }
