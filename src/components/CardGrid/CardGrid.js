@@ -1,4 +1,5 @@
-import React, {useEffect, useState, useReducer} from 'react';
+import React, {useEffect, useState, useReducer, useContext} from 'react';
+import {AppContext, AppHookContext} from '../../provider/appProvider';
 import key from 'weak-key';
 import setupCards from '../../data/data';
 import cardReducer from '../../reducers/cardReducer';
@@ -21,7 +22,11 @@ const CardGrid = () => {
   // const [matchedCards, setMatchedCards] = useState([]);
   // const [firstCard, setFirstCard] = useState();
   // const [secondCard, setSecondCard] = useState();
-  const [victory, setVictory] = useState(false);
+  // const [victory, setVictory] = useState(false);
+  const {turns} = useContext(AppContext);
+  const {setVictory, setTurns} = useContext(AppHookContext);
+
+  console.log(setVictory);
 
   const { matchedCards, firstCard, secondCard} = state;
 
@@ -43,11 +48,13 @@ const CardGrid = () => {
     if(firstCard === undefined){
       dispatch({type:'setFirstCard', payload: card})
     } else if (firstCard.label === card.label) {
+      setTurns(turns + 1);
       dispatch({type:'setSecondCard', payload: card})
       setTimeout(()=>{
         dispatch({type:'matchSelected'})
       }, 500);
     } else {
+      setTurns(turns + 1);
       dispatch({type:'setSecondCard', payload: card})
       setTimeout(()=>{
         dispatch({type:'resetSelection'})

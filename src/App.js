@@ -1,6 +1,5 @@
-import React, {useReducer} from 'react';
-// import appReducer from './reducer/cardReducer';
-import AppProvider from './provider/appProvider';
+import React, {useState} from 'react';
+import AppProvider, {AppHookProvider} from './provider/appProvider';
 import Header from './components/Header/Header';
 import CardGrid from './components/CardGrid/CardGrid';
 import './App.scss';
@@ -12,13 +11,17 @@ const initialState = {
 
 
 function App() {
-  // const state = useReducer(appReducer, initialState);
+  const [victory, setVictory] = useState(false);
+  const [turns, setTurns] = useState(0);
+
   return (
     <div className="App">
-      <AppProvider >
-        <Header />
-        <CardGrid />
-      </AppProvider>
+      <AppHookProvider value={{setVictory, setTurns}}>
+        <AppProvider value={{victory, turns}} >
+          <Header />
+          <CardGrid />
+        </AppProvider>
+      </AppHookProvider>
     </div>
   );
 }

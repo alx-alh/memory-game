@@ -4,9 +4,14 @@
 
 .App {
   text-align: center;
+  min-height: 100vh;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
 }
 body {
   background-color: var(--cool-gray) ;
+  margin-top:0;
 }
 
 * {

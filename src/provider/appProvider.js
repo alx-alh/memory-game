@@ -1,5 +1,6 @@
 import React from 'react';
 
-const AppContext = React.createContext({})
-const AppProvider = AppContext.Provider;
-export default AppProvider; 
+export const AppContext = React.createContext({});
+export const AppHookContext = React.createContext({});
+export const AppHookProvider = AppHookContext.Provider;
+export default AppContext.Provider;
