@@ -1,0 +1,28 @@
+.card {
+  background: #fff;
+  height: 150px;
+  transition: 300ms transform ease, 300ms opacity ease, 300ms box-shadow ease;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px -4px rgba(0,0,0, .3);
+  perspective: 900px;
+  z-index: 0;
+  position: relative;
+  cursor: pointer;
+  &:hover, &:focus {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(0,0,0,.1);
+    z-index: 100;
+  }
+}
+.card__front {
+  // transform: rotateY(180deg);
+}
+.card__front, .card__back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

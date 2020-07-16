@@ -1,0 +1,15 @@
+:root {
+  --cool-gray: #F2F8FF;
+}
+
+.App {
+  text-align: center;
+}
+body {
+  min-height: 100vh;
+  background-color: var(--cool-gray) ;
+}
+
+* {
+  box-sizing: border-box;
+}
