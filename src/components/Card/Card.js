@@ -2,7 +2,6 @@ import React from 'react';
 import './Card.scss';
 
 const Card = ({label, index, selectCard, isSelected, isMatched}) => {
-  const flipped = isSelected || isMatched;
   const flipCard = () => {
     // console.log(label)
     !isSelected && selectCard();
@@ -19,11 +18,10 @@ const Card = ({label, index, selectCard, isSelected, isMatched}) => {
   };
 
   return (
-    <div onClick={handleCardClick} onKeyDown={handleCardKeyDown} className={`card${flipped ? ' card--selected' : ''}${isMatched ? ' card--matched' : ''}`} role="button" tabIndex="0" aria-label={`card-${index + 1}`}>
+    <div onClick={handleCardClick} onKeyDown={handleCardKeyDown} className={`card${isSelected ? ' card--selected' : ''}${isMatched ? ' card--matched' : ''}`} aria-hidden={isMatched} role="button" tabIndex="0" aria-label={`card-${index + 1}`}>
       <div className="card__inner">
-        <div className="card__back" aria-hidden={flipped}>X{label}</div>
-        <div className="card__front" aria-hidden={flipped}><span>{label}</span></div>
-
+        <div className="card__back">X{label}</div>
+        <div className="card__front"><span>{label}</span></div>
       </div>
     </div>
   )

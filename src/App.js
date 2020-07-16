@@ -1,5 +1,5 @@
 import React, {useReducer} from 'react';
-import appReducer from './reducer/appReducer';
+// import appReducer from './reducer/cardReducer';
 import AppProvider from './provider/appProvider';
 import Header from './components/Header/Header';
 import CardGrid from './components/CardGrid/CardGrid';
@@ -12,10 +12,10 @@ const initialState = {
 
 
 function App() {
-  const state = useReducer(appReducer, initialState);
+  // const state = useReducer(appReducer, initialState);
   return (
     <div className="App">
-      <AppProvider value={state} >
+      <AppProvider >
         <Header />
         <CardGrid />
       </AppProvider>

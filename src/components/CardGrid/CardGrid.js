@@ -1,50 +1,57 @@
-import React, {useEffect, useState, useContext} from 'react';
-import AppContext from '../../provider/appProvider';
+import React, {useEffect, useState, useReducer} from 'react';
 import key from 'weak-key';
 import setupCards from '../../data/data';
+import cardReducer from '../../reducers/cardReducer';
 
 import Card from '../Card/Card';
 import './CardGrid.scss';
 
+let totalCards = 4;
+
+const initialState = {
+  firstCard: undefined,
+  secondCard: undefined,
+  matchedCards: [],
+
+}
+
 const CardGrid = () => {
+  const [state, dispatch] = useReducer(cardReducer, initialState);
   const [cardData, setCardData] = useState([]);
-  const [matchedCards, setMatchedCards] = useState([]);
-  const [firstCard, setFirstCard] = useState({});
-  const [secondCard, setSecondCard] = useState();
+  // const [matchedCards, setMatchedCards] = useState([]);
+  // const [firstCard, setFirstCard] = useState();
+  // const [secondCard, setSecondCard] = useState();
   const [victory, setVictory] = useState(false);
+
+  const { matchedCards, firstCard, secondCard} = state;
 
   
   useEffect(()=>{
     const fetchCards = async () => {
-      const data = await setupCards(24);
+      const data = await setupCards(totalCards);
       setCardData(data);
     }   
     fetchCards();
   },[]);
 
   useEffect(()=>{
-    matchedCards.length === 24 && setVictory(true);
+    matchedCards.length === totalCards && setVictory(true);
   }, [matchedCards]);
 
   const handleClick = (card) => {
-
     if(firstCard === card || secondCard !== undefined ) return;
-    if(!firstCard.label){
-      setFirstCard(card);
-      
+    if(firstCard === undefined){
+      dispatch({type:'setFirstCard', payload: card})
     } else if (firstCard.label === card.label) {
-      setSecondCard(card);
+      dispatch({type:'setSecondCard', payload: card})
       setTimeout(()=>{
-        setMatchedCards([...matchedCards, firstCard, card]);
-        setFirstCard({});
-        setSecondCard();
-      }, 1000);
+        dispatch({type:'matchSelected'})
+      }, 500);
     } else {
-      setSecondCard(card);
+      dispatch({type:'setSecondCard', payload: card})
       setTimeout(()=>{
-        setFirstCard({});
-        setSecondCard();
-      }, 1000);      
+        dispatch({type:'resetSelection'})
+      }, 500);
     }
   }
 
