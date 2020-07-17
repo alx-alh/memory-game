@@ -9,7 +9,7 @@ const Header = () => {
     <header>
       <h1>Memory Game</h1>
       <h3>Turns: {turns}</h3>
-      {victory && <h2 className={`victory-message${!victory ? ' victory-message--hidden' : ''}`}>You Win!</h2>}      
+      <h2 className={`victoryMessage${!victory ? ' victoryMessage--hidden' : ''}`}>You Win!</h2>      
     </header>
   )
 }

@@ -62,21 +62,20 @@ const CardGrid = () => {
 
   const resetClick = async () => {
     dispatch({type: 'resetMatches'});
-
     setCardData([]);
     setVictory(false);
     setTurns(0);
     let data = await setupCards(totalCards);
     setCardData(data);
-
   }
-
 
   return (
     <main className="main">
-      <div className="reset-container">
-        {victory && <button className={`btn${victory? ' btn--hidden' : ''}`} disabled={!victory} onClick={() => resetClick()}>Play Again</button>}
+       
+      <div className="resetContainer">
+        {victory &&    <button className={`btn${victory? ' btn--hidden' : ''}`} disabled={!victory} onClick={() => resetClick()}>Play Again</button>}
       </div>
+      
       <div className="cardGrid">
         {cardData.map( (card,i) => (
           <Card
