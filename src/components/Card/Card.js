@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Card.scss';
 
 const Card = ({label, index, selectCard, isSelected, isMatched}) => {
@@ -24,5 +25,13 @@ const Card = ({label, index, selectCard, isSelected, isMatched}) => {
       </div>
     </div>
   )
+}
+
+Card.propTypes = {
+  label: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired,
+  selectCard: PropTypes.func.isRequired,
+  isSelected: PropTypes.bool.isRequired,
+  isMatched: PropTypes.bool.isRequired,
 }
 export default Card;
