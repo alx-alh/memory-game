@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {AppContext, AppHookContext} from '../../provider/appProvider';
+import {AppContext} from '../../provider/appProvider';
 import './Header.scss';
 
 const Header = () => {

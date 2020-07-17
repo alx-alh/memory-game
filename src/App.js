@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import Helmet from 'react-helmet';
 import AppProvider, {AppHookProvider} from './provider/appProvider';
 import Header from './components/Header/Header';
 import CardGrid from './components/CardGrid/CardGrid';

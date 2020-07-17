@@ -7,7 +7,7 @@ import cardReducer from '../../reducers/cardReducer';
 import Card from '../Card/Card';
 import './CardGrid.scss';
 
-let totalCards = 4;
+let totalCards = 24;
 
 
 const CardGrid = () => {
@@ -39,7 +39,7 @@ const CardGrid = () => {
       setVictory(true)
     };
 
-  }, [matchedCards]);
+  }, [matchedCards, victory, setVictory]);
 
   const handleClick = (card) => {
     if(firstCard === card || secondCard !== undefined ) return;
