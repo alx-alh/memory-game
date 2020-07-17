@@ -23,7 +23,6 @@
   }
 }
 .card__inner {
-  background: #fff;
   box-shadow: var(--shadow);
   transition: 300ms transform ease, 300ms opacity ease, 300ms box-shadow ease;
   transform-style:preserve-3d;
@@ -61,6 +60,7 @@
   color: rgba(#fff, .8);
 }
 .card__front {
+  background: #fff;
   transform: rotateY(180deg);
   z-index: 900;
 }
