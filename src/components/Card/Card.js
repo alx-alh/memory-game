@@ -3,7 +3,6 @@ import './Card.scss';
 
 const Card = ({label, index, selectCard, isSelected, isMatched}) => {
   const flipCard = () => {
-    // console.log(label)
     !isSelected && selectCard();
   }
   

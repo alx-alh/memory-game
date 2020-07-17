@@ -9,7 +9,6 @@ import './CardGrid.scss';
 
 let totalCards = 24;
 
-
 const CardGrid = () => {
   const initialState = {
     firstCard: undefined,
@@ -23,8 +22,6 @@ const CardGrid = () => {
   const [state, dispatch] = useReducer(cardReducer, initialState);
   const { matchedCards, firstCard, secondCard} = state;
   const [cardData, setCardData] = useState([]);
-
-
   
   useEffect(()=>{
     const fetchCards = async () => {
@@ -71,11 +68,9 @@ const CardGrid = () => {
 
   return (
     <main className="main">
-       
       <div className="resetContainer">
         {victory &&    <button className={`btn${victory? ' btn--hidden' : ''}`} disabled={!victory} onClick={() => resetClick()}>Play Again</button>}
       </div>
-      
       <div className="cardGrid">
         {cardData.map( (card,i) => (
           <Card
