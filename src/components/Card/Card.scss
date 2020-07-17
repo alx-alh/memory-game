@@ -1,11 +1,11 @@
 .card {
   height: 150px;
   transition: 300ms transform ease, 300ms opacity ease, 300ms box-shadow ease;
-  border-radius: 3px;
   perspective: 900px;
   z-index: 0;
   position: relative;
   cursor: pointer;
+  font-size: 2rem;
   &:hover, &:focus {
     transform: scale(1.05);
     z-index: 100;
@@ -45,7 +45,6 @@
 
   }
   .card__back {
-
   }
 }
 .card--matched {
@@ -59,6 +58,7 @@
 
 .card__front, .card__back {
   position: absolute;
+  border-radius: 5px;
   height: 100%;
   width: 100%;
   backface-visibility: hidden;
@@ -67,7 +67,9 @@
   justify-content: center;
 }
 .card__back {
-  background: rgba(red, 0.2);
+  background: #444;
+  font-size: 5rem;
+  color: rgba(#fff, .8);
 }
 .card__front {
   transform: rotateY(180deg);

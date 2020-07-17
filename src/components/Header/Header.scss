@@ -1,0 +1,7 @@
+.victory-message {
+  transition: opacity ease 300ms;
+  opacity: 1;
+}
+.victory-message--hidden {
+  opacity: 0;
+}

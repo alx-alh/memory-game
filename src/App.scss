@@ -1,17 +1,29 @@
 :root {
   --cool-gray: #F2F8FF;
+  --copy-color: #444;
+  --fnt: 'Roboto', 'Helvetica', arial, sans-serif;
 }
 
 .App {
   text-align: center;
   min-height: 100vh;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 body {
   background-color: var(--cool-gray) ;
   margin-top:0;
+  font-family: var(--fnt);
+  font-weight: 500;
+  color: var(--copy-color);
+}
+h1 {
+  text-transform: uppercase;
+}
+h1, h2, h3 {
+  font-family: var(--fnt);
+  font-weight: 300;
 }
 
 * {

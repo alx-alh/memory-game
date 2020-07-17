@@ -65,7 +65,8 @@ const CardGrid = () => {
 
     setCardData([]);
     setVictory(false);
-    let data = await setupCards(4);
+    setTurns(0);
+    let data = await setupCards(totalCards);
     setCardData(data);
 
   }
@@ -73,7 +74,9 @@ const CardGrid = () => {
 
   return (
     <main className="main">
-      { victory && <button onClick={() => resetClick()}>Play Again</button>}
+      <div className="reset-container">
+        {victory && <button className={`btn${victory? ' btn--hidden' : ''}`} disabled={!victory} onClick={() => resetClick()}>Play Again</button>}
+      </div>
       <div className="cardGrid">
         {cardData.map( (card,i) => (
           <Card
@@ -82,7 +85,6 @@ const CardGrid = () => {
             key={key(card)}
             isMatched={matchedCards.includes(card)}
             isSelected={firstCard === card || secondCard === card}
-            // isSelected={firstCard.includes(card)}
             selectCard={() => handleClick(card)}
           />
         ))}

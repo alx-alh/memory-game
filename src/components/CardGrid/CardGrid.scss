@@ -1,15 +1,25 @@
 .cardGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
   grid-gap: 1rem;
   margin: 0 auto;
   padding:1rem;
-}
-@media (min-width: 600px){
-  .cardGrid {
-    /* width: max(70vw, 800px); */
+  @media (min-width: 600px){
     width: clamp( 600px, 800px, 70vw);
     grid-template-columns: repeat(6, 1fr);
+  }
+}
+.reset-container {
+  padding: 1.25rem;
+  position: absolute;
+}
+.btn {
+  cursor: pointer;
+  transition: opacity ease 300ms;
+  padding: 0.625rem;
+  &[disabled] {
+    cursor: default;
+    opacity: 0;
   }
 }
