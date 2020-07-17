@@ -23,12 +23,13 @@
 body {
   background-color: var(--cool-gray) ;
   margin:0;
-  font-family: var(--fnt);
   font-weight: 500;
   color: var(--dark-gray);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;;
 }
 h1 {
   text-transform: uppercase;

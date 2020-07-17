@@ -20,7 +20,7 @@ const Card = ({label, index, selectCard, isSelected, isMatched}) => {
   return (
     <div onClick={handleCardClick} onKeyDown={handleCardKeyDown} className={`card${isSelected ? ' card--selected' : ''}${isMatched ? ' card--matched' : ''}`} aria-hidden={isMatched} role="button" tabIndex="0" aria-label={`card-${index + 1}`}>
       <div className="card__inner">
-        <div className="card__back">&spades;</div>
+        <div className="card__back">&diams;</div>
         <div className="card__front"><span>{label}</span></div>
       </div>
     </div>
