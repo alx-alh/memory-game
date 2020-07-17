@@ -6,9 +6,12 @@
   position: relative;
   cursor: pointer;
   font-size: 2rem;
-  &:hover, &:focus {
+  &:hover {
     transform: scale(1.1);
     z-index: 100;
+  }
+  &:focus {
+    transform: scale(1.05);
     outline: none;
   }
   &.card--selected {
