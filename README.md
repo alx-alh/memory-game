@@ -2,7 +2,7 @@
 
 Test your memory! Find the matching card pairs!
 
-Play Online at [https://alx-alh.github.io/memory-game/](https://alx-alh.github.io/memory-game/). 
+Play online at [https://alx-alh.github.io/memory-game/](https://alx-alh.github.io/memory-game/). 
 
 You can also clone this repository, run npm install, then use one of the scripts below. 
 
