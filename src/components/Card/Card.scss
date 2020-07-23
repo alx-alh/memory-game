@@ -4,6 +4,7 @@
   perspective: 900px;
   z-index: 0;
   position: relative;
+  backface-visibility: hidden;
   cursor: pointer;
   font-size: 2rem;
   &:hover {
@@ -49,18 +50,26 @@
   border-radius: var(--border-radius);
   height: 100%;
   width: 100%;
-  backface-visibility: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .card__back {
-  background: var(--deep-blue);
+  backface-visibility: hidden;
+
   font-size: 5rem;
   color: rgba(#fff, .8);
+  background: var(--cool-gray);
+  .alt-theme & {
+    background: var(--deep-blue);
+  }
 }
 .card__front {
-  background: #fff;
   transform: rotateY(180deg);
   z-index: 900;
+  background: var(--peach);
+
+  .alt-theme & {
+    background: #fff;
+  }
 }

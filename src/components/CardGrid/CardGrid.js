@@ -20,7 +20,7 @@ const CardGrid = () => {
   const {turns, victory} = useContext(AppContext);
   const {setVictory, setTurns} = useContext(AppHookContext);
   const [state, dispatch] = useReducer(cardReducer, initialState);
-  const { matchedCards, firstCard, secondCard} = state;
+  const {matchedCards, firstCard, secondCard} = state;
   const [cardData, setCardData] = useState([]);
   
   useEffect(()=>{
@@ -39,7 +39,7 @@ const CardGrid = () => {
   }, [matchedCards, victory, setVictory]);
 
   const handleClick = (card) => {
-    if(firstCard === card || secondCard !== undefined ) return;
+    if(firstCard === card || secondCard !== undefined || matchedCards.includes(card) ) return;
     if(firstCard === undefined){
       dispatch({type:'setFirstCard', payload: card})
     } else if (firstCard.label === card.label) {
@@ -67,9 +67,14 @@ const CardGrid = () => {
 
   return (
     <main className="main">
-      <div className="resetContainer">
-        {victory && <button className={`btn${victory? ' btn--hidden' : ''}`} disabled={!victory} onClick={() => resetClick()} aria-hidden={!victory} aria-label='Play Again'>Play Again</button>}
-      </div>
+        {victory &&
+          <> 
+            <div className="resetContainer">
+              <h2>You Win!</h2>
+              <button className="btn" disabled={!victory} onClick={() => resetClick()}>Play Again</button>
+            </div>
+          </>
+        }
       <div className="cardGrid">
         {cardData.map( (card,i) => (
           <Card

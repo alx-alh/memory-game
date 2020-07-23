@@ -16,6 +16,7 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 900;
+  width: 100%;
 }
 .btn {
   cursor: pointer;
@@ -25,9 +26,13 @@
   color: #fff;
   border: none;
   animation: pulse 2s infinite;
+  font-family: var(--retro-fnt);
   &[disabled] {
     cursor: default;
     opacity: 0;
+  }
+  .alt-theme & {
+    font-family: var(--fnt);
   }
 }
 @keyframes pulse {

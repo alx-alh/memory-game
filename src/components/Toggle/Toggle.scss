@@ -1,0 +1,50 @@
+.toggle {
+  &__track {
+    width: 50px;
+    height: 24px;
+    border-radius: 30px;
+    background-color: var(--light-gray);
+    position: relative;
+    cursor: pointer;
+    .alt-theme & {
+      background: var(--dark-gray);
+      color: var(--cool-gray);
+    }
+  }
+  &__icon {
+    position: absolute;
+    width:15px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity ease 300ms, color ease 300ms;
+    &--checked {
+      left: 4px;
+      opacity: 0;
+      .toggle--checked & {
+        opacity: 1;
+      }
+    }
+    &--x {
+      right:6px;
+      .toggle--checked & {
+        opacity: 0;
+      }
+    }
+  }
+  &__thumb {
+    position: absolute;
+    transition: left ease 300ms;
+    top:1px;
+    left:1px;
+    border: 1px solid var(--dark-gray);
+    width: 22px;
+    height: 22px;
+    background-color: var(--cool-gray);
+    border-radius: 50%;
+    .toggle--checked & {
+      left: 27px;
+    }
+  }
+}

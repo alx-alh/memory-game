@@ -4,6 +4,6 @@ import App from './App';
 
 test('renders game heading', () => {
   const { getByText } = render(<App />);
-  const linkElement = getByText(/Memory Game/i);
-  expect(linkElement).toBeInTheDocument();
+  const headerElement = getByText(/Memory Game/i);
+  expect(headerElement).toBeInTheDocument();
 });

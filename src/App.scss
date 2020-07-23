@@ -1,11 +1,15 @@
 :root {
   --cool-gray: #F2F8FF;
+  --light-gray: rgba(255,255,255,0.2);
   --dark-gray: #444;
+  --dark-bg: #1A1A1A;
   --med-blue: #496A81;
   --deep-blue: #2B3A67;
   --orange: #F68E5F;
   --orangered: #F76C5E;
+  --peach: #fdbfb3;
   --fnt: 'Roboto', 'Helvetica Neue','Helvetica', arial, sans-serif;
+  --retro-fnt: 'Press Start 2P', cursive;
   --shadow:0 4px 8px -4px rgba(0,0,0, .3);
   --shadow-hover: 0 8px 24px rgba(0,0,0,.1);
   --border-radius: 5px;
@@ -13,28 +17,36 @@
 * {
   box-sizing: border-box;
 }
+body {
+  margin:0;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--cool-gray);
+  background: var(--dark-bg);
+  font-family: var(--retro-fnt);
+  & .alt-theme {
+    font-family: var(--fnt);
+    background-color: var(--cool-gray) ;
+    color: var(--dark-gray);
+  }
+}
 .App {
   text-align: center;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transition: background-color ease 300ms, color ease 300ms;
 }
-body {
-  background-color: var(--cool-gray) ;
-  margin:0;
-  font-weight: 500;
-  color: var(--dark-gray);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;;
-}
+
 h1 {
   text-transform: uppercase;
 }
 h1, h2, h3 {
-  font-family: var(--fnt);
   font-weight: 300;
+}
+img {
+  max-width: 100%;
+  height: auto;
 }

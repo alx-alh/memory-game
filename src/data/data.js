@@ -12,10 +12,25 @@ export default (cardCount) => {
   return new Promise( (resolve, reject) => {
     if (cardCount % 2 !== 0) reject(new Error('must request even number of cards'));
     let uniqueCards = cardCount / 2;
-    let data = [];
-    for(let i = 0; i < uniqueCards; i++){
-      data[i] = {label: i+1};
-    }
+    // let data = [...Array(uniqueCards)];
+    let data = [...Array(uniqueCards)].map( (card, i) => {
+      let shift = 0;
+      let img = 0;
+      if(i > 11) {
+        shift = 90;
+        img = i - 12;
+      } else if(i > 5){
+        shift = 270;
+        img = i - 6;
+      } else {
+        img = i;
+      }
+      return {label: i+1, shift, img};
+    })
+    // let data = [];
+    // for(let i = 0; i < uniqueCards; i++){
+    //   data[i] = {label: i+1};
+    // }
     data = [...data, ...data];
     data = data.map( card => {
       return {...card}

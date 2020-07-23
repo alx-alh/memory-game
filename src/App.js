@@ -7,11 +7,12 @@ import './App.scss';
 function App() {
   const [victory, setVictory] = useState(false);
   const [turns, setTurns] = useState(0);
+  const [altTheme, setAltTheme] = useState(false);
 
   return (
-    <div className="App">
-      <AppHookProvider value={{setVictory, setTurns}}>
-        <AppProvider value={{victory, turns}} >
+    <div className={`App${altTheme ? ' alt-theme' : ''}`}>
+      <AppHookProvider value={{setVictory, setTurns, setAltTheme}}>
+        <AppProvider value={{victory, turns, altTheme}} >
           <Header />
           <CardGrid />
         </AppProvider>
