@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {AppContext, AppHookContext} from '../../provider/appProvider';
 import './Toggle.scss';
 
-const Toggle = ({clickHandle}) => {
+const Toggle = () => {
   const {setAltTheme} = useContext(AppHookContext);
   const {altTheme} = useContext(AppContext);
 
